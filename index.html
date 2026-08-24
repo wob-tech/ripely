@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripely | Simply fruit. Pure energy.</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&amp;family=Montserrat:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Custom Properties */
+        :root {
+            --color-dark: #2D2926;
+            --color-light: #F7F4EB;
+            --color-yellow: #E9B44C;
+            --color-pink: #D67180;
+            --color-green: #9DB591;
+
+            --font-head: 'Arvo', serif;
+            --font-body: 'Montserrat', sans-serif;
+
+            --header-height: 80px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background-color: var(--color-light);
+            line-height: 1.6;
+            padding-top: var(--header-height);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-padding-top: var(--header-height);
+            scroll-behavior: smooth;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, .brand-logo {
+            font-family: var(--font-head);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-dark);
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1.5rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        p { font-size: 1rem; margin-bottom: 1.5rem; font-weight: 400; }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        /* Layout Utilities */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(45, 41, 38, 0.15);
+        }
+
+        .btn-primary {
+            background-color: var(--color-yellow);
+            color: var(--color-dark);
+        }
+
+        .btn-dark {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background-color: rgba(247, 244, 235, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 300;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(45, 41, 38, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .brand-logo {
+            font-size: 1.8rem;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-pink);
+        }
+
+        @media (min-width: 768px) {
+            .nav-links { display: flex; align-items: center; }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: calc(90vh - var(--header-height));
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(247,244,235,0.9) 0%, rgba(247,244,235,0.4) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+        }
+
+        .hero h1 { margin-bottom: 1rem; }
+        .hero p { margin-bottom: 2.5rem; font-size: 1.25rem; }
+
+        /* Values Section */
+        .values {
+            background-color: #fff;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .values-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .value-card {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 0; /* Keeping corners crisp per rules, avoiding clip-path issues */
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-card.yellow { background-color: var(--color-yellow); }
+        .value-card.pink { background-color: var(--color-pink); }
+        .value-card.green { background-color: var(--color-green); }
+
+        .value-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Products Section */
+        .products {
+            background-color: var(--color-light);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 600px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .product-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .product-card {
+            background-color: #fff;
+            padding: 2rem;
+            text-align: center;
+            transition: box-shadow 0.4s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 20px 40px rgba(45, 41, 38, 0.08);
+        }
+
+        .product-image-container {
+            width: 100%;
+            aspect-ratio: 864 / 1184;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-title {
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        /* Process Section */
+        .process {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            overflow: hidden;
+        }
+
+        .process h2, .process h3 {
+            color: var(--color-light);
+        }
+
+        .process-split {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (min-width: 900px) {
+            .process-split { grid-template-columns: 1fr 1fr; }
+        }
+
+        .process-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+        }
+
+        .process-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Decorative element */
+        .deco-circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: var(--color-pink);
+            z-index: 0;
+            top: -10%;
+            right: -10%;
+            opacity: 0.2;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            position: relative;
+            text-align: center;
+            padding: 8rem 5%;
+            color: var(--color-dark);
+        }
+
+        .cta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .cta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(233, 180, 76, 0.85); /* Yellow overlay */
+            z-index: 2;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-banner h2 { margin-bottom: 2rem; font-size: clamp(2.5rem, 5vw, 4rem); }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-light);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid rgba(45, 41, 38, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .footer-col h4 {
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+
+        .footer-col p, .footer-col a {
+            color: var(--color-dark);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            opacity: 1;
+            color: var(--color-pink);
+        }
+
+        .footer-bottom {
+            margin-top: 4rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(45, 41, 38, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">Ripely</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#values">The Difference</a></li>
+                    <li><a href="#snacks">Our Snacks</a></li>
+                    <li><a href="#process">The Process</a></li>
+                    <li>
+                        <a href="https://www.eatripely.com" target="_blank" class="btn btn-dark" style="padding: 0.6rem 1.5rem; color: var(--color-light);">
+                            Shop Online
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg" style="background-image: url('https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/8GvBSJbSS3ydXVnrFN0kEk?authuser=0'); background-size: cover; background-position: center;"></div>
+            <div class="hero-overlay"></div>
+
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Simply fruit.<br>Pure energy.</h1>
+                    <p class="subtitle">Naturally air-crisped fruit snacks with no added sugar or additives. A wholesome and fun alternative for health-conscious parents and children seeking pure, one-ingredient snacks.</p>
+                    <a href="https://www.eatripely.com" target="_blank" class="btn btn-primary">Shop Online</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section id="values" class="values section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Honestly Good.</h2>
+                    <p class="subtitle">We believe in wholesome minimalism and transparent ingredients. Our premium snacks are designed for families who want practical purpose without compromising on taste.</p>
+                </div>
+
+                <div class="values-grid">
+                    <div class="value-card yellow">
+                        <h3>100% Real Fruit</h3>
+                        <p>We use only the finest natural ingredients. No artificial flavors, colors, or unnecessary fillers. Just pure, orchard-fresh goodness.</p>
+                    </div>
+                    <div class="value-card pink">
+                        <h3>Zero Additives</h3>
+                        <p>No added sugar. No preservatives. We rely on the natural sweetness of the fruit, delivering clean-label clarity you can trust.</p>
+                    </div>
+                    <div class="value-card green">
+                        <h3>Pure Energy</h3>
+                        <p>Light, satisfying, and perfect for active lifestyles. Our snacks provide real, sustained energy from nature's simplest ingredients.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Lineup Section -->
+        <section id="snacks" class="products section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Meet the Lineup</h2>
+                    <p class="subtitle">Vibrant organicism meets playful sophistication. Discover our range of single-ingredient air-crisped snacks.</p>
+                </div>
+
+                <div class="product-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/86rtTBywLC_7GYI8REROLk?authuser=0" alt="Ripely Crispy Peach Snack">
+                        </div>
+                        <h3 class="product-title">Crispy Peach</h3>
+                        <a href="https://www.eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Peach</a>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/8FT1L9rpoZ_8ZpJ5P6X4NS?authuser=0" alt="Ripely Crispy Mandarin Snack">
+                        </div>
+                        <h3 class="product-title">Crispy Mandarin</h3>
+                        <a href="https://www.eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Mandarin</a>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9AgKXyMD6KaeUqou7Ix4Ux?authuser=0" alt="Ripely Crispy Pineapple Snack">
+                        </div>
+                        <h3 class="product-title">Crispy Pineapple</h3>
+                        <a href="https://www.eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Pineapple</a>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9i6PesDH6s68Ag8muj3kBF?authuser=0" alt="Ripely Crispy Strawberry Snack">
+                        </div>
+                        <h3 class="product-title">Crispy Strawberry</h3>
+                        <a href="https://www.eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Strawberry</a>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9rOPbcGhvWIdFSnBb5T_3o?authuser=0" alt="Ripely Crispy Watermelon Snack">
+                        </div>
+                        <h3 class="product-title">Crispy Watermelon</h3>
+                        <a href="https://www.eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Watermelon</a>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9yf_CoVaYHX1hRHwAM3kDk?authuser=0" alt="Ripely Crispy Melon Snack">
+                        </div>
+                        <h3 class="product-title">Crispy Melon</h3>
+                        <a href="https://www.eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Melon</a>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/bTrohzYwBDk0MUzr4AJkmB?authuser=0" alt="Ripely Crispy Chili Snack">
+                        </div>
+                        <h3 class="product-title">Crispy Chili</h3>
+                        <a href="https://www.eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Chili</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process / About Section -->
+        <section id="process" class="process section-padding">
+            <div class="container">
+                <div class="process-split">
+                    <div class="process-image-wrapper">
+                        <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9HhoNEV_an5fqAg8ztg4qq?authuser=0" alt="Natural fruit preparation">
+                    </div>
+                    <div class="process-content" style="position: relative; z-index: 10;">
+                        <div class="deco-circle"></div>
+                        <div style="position: relative; z-index: 2;">
+                            <h2>The Air-Crisped Difference</h2>
+                            <p class="subtitle" style="margin-bottom: 2rem;">A unique innovation in the premium grocery space.</p>
+                            <p>Ripely leverages a specialized air-crisping process to provide a healthy, one-ingredient alternative to traditional snacks. By circulating warm air around the natural fruit, we gently remove moisture while locking in flavor, nutrients, and a satisfying crunch.</p>
+                            <p>The result? A modern, trend-led lifestyle snack that prioritizes honesty, simplicity, transparency, and wholesomeness. No oil, no frying, just naturally crisped perfection supported by evidence and science.</p>
+                            <br>
+                            <a href="https://www.eatripely.com" target="_blank" class="btn btn-primary">Shop Online</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <section class="cta-banner">
+            <div class="cta-bg" style="background-image: url('https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/aAZWazmVJ8194CTjqBYkwa?authuser=0'); background-size: cover; background-position: center;"></div>
+            <div class="cta-overlay"></div>
+
+            <div class="cta-content">
+                <h2>Ready for pure energy?</h2>
+                <p class="subtitle" style="margin-bottom: 3rem; color: var(--color-dark);">Experience the light, satisfying crunch of simply fruit.</p>
+                <a href="https://www.eatripely.com" target="_blank" class="btn btn-dark" style="font-size: 1.2rem; padding: 1.2rem 3rem;">Shop Online</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h2 class="brand-logo" style="font-size: 2.5rem; margin-bottom: 1rem;">Ripely</h2>
+                    <p>Simply fruit. Pure energy.<br>Naturally air-crisped fruit snacks.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <a href="mailto:lets@eatripely.com">lets@eatripely.com</a>
+                    <p style="margin-top: 1rem;">Seattle-based snack company.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <a href="https://www.eatripely.com" target="_blank">Shop Online</a>
+                    <a href="#snacks">Our Snacks</a>
+                    <a href="#process">Our Process</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© Ripely. Honesty, Simplicity, Transparency, Wholesomeness.</p>
+            </div>
+        </div>
+    </footer>
+
+</body></html>
