@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ripely | Simply fruit. Pure energy.</title>
-
+    <title>Ripely | Simply fruit. Pure energy. - Product Catalog</title>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&amp;family=Montserrat:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    
     <style>
         /* CSS Custom Properties */
         :root {
@@ -17,10 +18,10 @@
             --color-yellow: #E9B44C;
             --color-pink: #D67180;
             --color-green: #9DB591;
-
+            
             --font-head: 'Arvo', serif;
             --font-body: 'Montserrat', sans-serif;
-
+            
             --header-height: 80px;
         }
 
@@ -57,7 +58,7 @@
         h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 1.5rem; }
         h3 { font-size: 1.5rem; margin-bottom: 1rem; }
         p { font-size: 1rem; margin-bottom: 1.5rem; font-weight: 400; }
-
+        
         .subtitle {
             font-size: clamp(1.1rem, 2vw, 1.3rem);
             font-weight: 500;
@@ -88,7 +89,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
             cursor: pointer;
             border: none;
         }
@@ -106,6 +107,47 @@
         .btn-dark {
             background-color: var(--color-dark);
             color: var(--color-light);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-dark);
+            border: 2px solid var(--color-dark);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+        }
+
+        /* Image Download Button */
+        .download-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(255, 255, 255, 0.95);
+            color: var(--color-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            background-color: var(--color-yellow);
+        }
+
+        .download-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
 
         /* Header */
@@ -163,7 +205,7 @@
         /* Hero Section */
         .hero {
             position: relative;
-            min-height: calc(90vh - var(--header-height));
+            min-height: calc(85vh - var(--header-height));
             display: flex;
             align-items: center;
         }
@@ -176,21 +218,21 @@
             height: 100%;
             z-index: 1;
         }
-
+        
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(247,244,235,0.9) 0%, rgba(247,244,235,0.4) 100%);
+            background: linear-gradient(135deg, rgba(247,244,235,0.92) 0%, rgba(247,244,235,0.5) 100%);
             z-index: 2;
         }
 
         .hero-content {
             position: relative;
             z-index: 10;
-            max-width: 600px;
+            max-width: 650px;
         }
 
         .hero h1 { margin-bottom: 1rem; }
@@ -215,7 +257,6 @@
         .value-card {
             padding: 3rem 2rem;
             text-align: center;
-            border-radius: 0; /* Keeping corners crisp per rules, avoiding clip-path issues */
             transition: transform 0.3s ease;
             position: relative;
         }
@@ -223,7 +264,7 @@
         .value-card:hover {
             transform: translateY(-5px);
         }
-
+        
         .value-card.yellow { background-color: var(--color-yellow); }
         .value-card.pink { background-color: var(--color-pink); }
         .value-card.green { background-color: var(--color-green); }
@@ -233,21 +274,21 @@
             margin-bottom: 1rem;
         }
 
-        /* Products Section */
+        /* Products Overview Section */
         .products {
             background-color: var(--color-light);
         }
 
         .section-header {
             text-align: center;
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto 4rem auto;
         }
 
         .product-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 3rem;
+            gap: 2.5rem;
         }
 
         @media (min-width: 600px) {
@@ -262,14 +303,15 @@
             background-color: #fff;
             padding: 2rem;
             text-align: center;
-            transition: box-shadow 0.4s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: box-shadow 0.4s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .product-card:hover {
+            transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(45, 41, 38, 0.08);
         }
 
@@ -293,7 +335,283 @@
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-card-subtitle {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        /* Product Details / Full Page Cards Section */
+        .product-details-section {
+            background-color: #fff;
+            border-top: 1px solid rgba(45, 41, 38, 0.08);
+        }
+
+        .product-quick-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-nav-item {
+            padding: 0.6rem 1.4rem;
+            background-color: var(--color-light);
+            color: var(--color-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(45, 41, 38, 0.1);
+        }
+
+        .product-nav-item:hover {
+            background-color: var(--color-yellow);
+            border-color: var(--color-yellow);
+        }
+
+        .product-detail-card {
+            scroll-margin-top: calc(var(--header-height) + 20px);
+            background-color: var(--color-light);
+            padding: 3rem 2rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-left: 6px solid var(--color-yellow);
+            position: relative;
+        }
+
+        @media (min-width: 900px) {
+            .product-detail-card {
+                padding: 4rem 3rem;
+            }
+        }
+
+        .product-detail-card.peach { border-left-color: var(--color-yellow); }
+        .product-detail-card.mandarin { border-left-color: #E07A5F; }
+        .product-detail-card.pineapple { border-left-color: var(--color-green); }
+        .product-detail-card.strawberry { border-left-color: var(--color-pink); }
+        .product-detail-card.watermelon { border-left-color: var(--color-pink); }
+        .product-detail-card.melon { border-left-color: var(--color-green); }
+        .product-detail-card.chili { border-left-color: #C0392B; }
+
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        @media (min-width: 900px) {
+            .product-detail-grid {
+                grid-template-columns: 1fr 1.2fr;
+            }
+        }
+
+        .product-detail-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+            aspect-ratio: 864 / 1184;
+            background-color: #fff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+        }
+
+        .product-detail-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-badge-pill {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 1rem;
+        }
+
+        .product-detail-info h3 {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-detail-subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-dark);
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-detail-desc {
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .product-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border: 1px solid rgba(45, 41, 38, 0.08);
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            opacity: 0.6;
+            margin-bottom: 0.2rem;
+        }
+
+        .spec-value {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* Nutrition Facts & Back Panel Component Styles */
+        .back-panel-card {
+            background-color: #fff;
+            border: 2px solid var(--color-dark);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        .back-panel-header {
+            border-bottom: 2px solid var(--color-dark);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-panel-tag {
+            display: inline-block;
+            background-color: var(--color-yellow);
+            color: var(--color-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .nutrition-label {
+            border: 2px solid var(--color-dark);
+            padding: 1rem;
+            background-color: #fff;
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            margin-top: 1rem;
+        }
+
+        .nutrition-label .nutrition-title {
+            font-family: var(--font-head);
+            font-size: 1.6rem;
+            font-weight: 700;
+            border-bottom: 8px solid var(--color-dark);
+            padding-bottom: 2px;
+            margin-bottom: 4px;
+            line-height: 1.1;
+        }
+
+        .nutrition-label .serving-info {
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-bottom: 4px solid var(--color-dark);
+            padding-bottom: 4px;
+            margin-bottom: 4px;
+        }
+
+        .nutrition-label .calories-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 4px solid var(--color-dark);
+            padding: 4px 0;
+            margin-bottom: 4px;
+        }
+
+        .nutrition-label .calories-label {
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .nutrition-label .calories-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: var(--font-head);
+            line-height: 1;
+        }
+
+        .nutrition-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .nutrition-table tr {
+            border-bottom: 1px solid rgba(45, 41, 38, 0.2);
+        }
+
+        .nutrition-table td {
+            padding: 4px 0;
+        }
+
+        .nutrition-table .thick-border {
+            border-bottom: 4px solid var(--color-dark);
+        }
+
+        .nutrition-table .indent {
+            padding-left: 1rem;
+        }
+
+        .nutrition-ingredients {
+            margin-top: 0.75rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(45, 41, 38, 0.2);
+            font-size: 0.85rem;
+        }
+
+        .nutrition-storage {
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed rgba(45, 41, 38, 0.3);
+            font-size: 0.8rem;
+            font-style: italic;
+            color: #555;
         }
 
         /* Process Section */
@@ -302,7 +620,7 @@
             color: var(--color-light);
             overflow: hidden;
         }
-
+        
         .process h2, .process h3 {
             color: var(--color-light);
         }
@@ -330,7 +648,7 @@
             object-fit: cover;
             display: block;
         }
-
+        
         /* Decorative element */
         .deco-circle {
             position: absolute;
@@ -351,7 +669,7 @@
             padding: 8rem 5%;
             color: var(--color-dark);
         }
-
+        
         .cta-bg {
             position: absolute;
             top: 0;
@@ -360,7 +678,7 @@
             height: 100%;
             z-index: 1;
         }
-
+        
         .cta-overlay {
             position: absolute;
             top: 0;
@@ -370,14 +688,14 @@
             background: rgba(233, 180, 76, 0.85); /* Yellow overlay */
             z-index: 2;
         }
-
+        
         .cta-content {
             position: relative;
             z-index: 10;
             max-width: 800px;
             margin: 0 auto;
         }
-
+        
         .cta-banner h2 { margin-bottom: 2rem; font-size: clamp(2.5rem, 5vw, 4rem); }
 
         /* Footer */
@@ -440,6 +758,7 @@
                 <ul class="nav-links">
                     <li><a href="#values">The Difference</a></li>
                     <li><a href="#snacks">Our Snacks</a></li>
+                    <li><a href="#product-details">Product Details</a></li>
                     <li><a href="#process">The Process</a></li>
                     <li>
                         <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="padding: 0.6rem 1.5rem; color: var(--color-light);">
@@ -454,9 +773,9 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-bg" style="background-image: url('https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/8GvBSJbSS3ydXVnrFN0kEk?authuser=0'); background-size: cover; background-position: center;"></div>
+            <div class="hero-bg" data-alt="Abstract soft focus organic background mixing warm cream, sage green, and muted yellow, evoking the feeling of a sunlit orchard and clean-label clarity. Wholesome minimalist texture, no text." style="background-image: url('https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/8GvBSJbSS3ydXVnrFN0kEk?authuser=0'); background-size: cover; background-position: center;"></div>
             <div class="hero-overlay"></div>
-
+            
             <div class="container">
                 <div class="hero-content">
                     <h1>Simply fruit.<br>Pure energy.</h1>
@@ -473,7 +792,7 @@
                     <h2>Honestly Good.</h2>
                     <p class="subtitle">We believe in wholesome minimalism and transparent ingredients. Our premium snacks are designed for families who want practical purpose without compromising on taste.</p>
                 </div>
-
+                
                 <div class="values-grid">
                     <div class="value-card yellow">
                         <h3>100% Real Fruit</h3>
@@ -491,12 +810,12 @@
             </div>
         </section>
 
-        <!-- Product Lineup Section -->
+        <!-- Product Lineup Overview Grid -->
         <section id="snacks" class="products section-padding">
             <div class="container">
                 <div class="section-header">
                     <h2>Meet the Lineup</h2>
-                    <p class="subtitle">Vibrant organicism meets playful sophistication. Discover our range of single-ingredient air-crisped snacks.</p>
+                    <p class="subtitle">Vibrant organicism meets playful sophistication. Explore our entire range of single-ingredient air-crisped snacks below or select a flavor for full product details.</p>
                 </div>
 
                 <div class="product-grid">
@@ -504,65 +823,759 @@
                     <div class="product-card">
                         <div class="product-image-container">
                             <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/86rtTBywLC_7GYI8REROLk?authuser=0" alt="Ripely Crispy Peach Snack">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/86rtTBywLC_7GYI8REROLk?authuser=0" download="Ripely-Crispy-Peach" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
                         </div>
-                        <h3 class="product-title">Crispy Peach</h3>
-                        <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Peach</a>
+                        <div>
+                            <h3 class="product-title">Crispy Peach</h3>
+                            <p class="product-card-subtitle">Naturally Dried Peach</p>
+                        </div>
+                        <div class="product-card-actions">
+                            <a href="#product-peach" class="btn btn-outline" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">View Details</a>
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">Shop Peach</a>
+                        </div>
                     </div>
-
+                    
                     <!-- Product 2 -->
                     <div class="product-card">
                         <div class="product-image-container">
                             <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/8FT1L9rpoZ_8ZpJ5P6X4NS?authuser=0" alt="Ripely Crispy Mandarin Snack">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/8FT1L9rpoZ_8ZpJ5P6X4NS?authuser=0" download="Ripely-Crispy-Mandarin" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
                         </div>
-                        <h3 class="product-title">Crispy Mandarin</h3>
-                        <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Mandarin</a>
+                        <div>
+                            <h3 class="product-title">Crispy Mandarin</h3>
+                            <p class="product-card-subtitle">100% Mandarin Oranges</p>
+                        </div>
+                        <div class="product-card-actions">
+                            <a href="#product-mandarin" class="btn btn-outline" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">View Details</a>
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">Shop Mandarin</a>
+                        </div>
                     </div>
 
                     <!-- Product 3 -->
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9AgKXyMD6KaeUqou7Ix4Ux?authuser=0" alt="Ripely Crispy Pineapple Snack">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9AgKXyMD6KaeUqou7Ix4Ux?authuser=0" alt="Ripely Pineapple Zest Snack">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9AgKXyMD6KaeUqou7Ix4Ux?authuser=0" download="Ripely-Pineapple-Zest" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
                         </div>
-                        <h3 class="product-title">Crispy Pineapple</h3>
-                        <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Pineapple</a>
+                        <div>
+                            <h3 class="product-title">Pineapple Zest</h3>
+                            <p class="product-card-subtitle">Naturally Air-Crisped Pineapple</p>
+                        </div>
+                        <div class="product-card-actions">
+                            <a href="#product-pineapple" class="btn btn-outline" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">View Details</a>
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">Shop Pineapple</a>
+                        </div>
                     </div>
 
                     <!-- Product 4 -->
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9i6PesDH6s68Ag8muj3kBF?authuser=0" alt="Ripely Crispy Strawberry Snack">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9i6PesDH6s68Ag8muj3kBF?authuser=0" alt="Ripely Strawberry Crunch Snack">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9i6PesDH6s68Ag8muj3kBF?authuser=0" download="Ripely-Strawberry-Crunch" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
                         </div>
-                        <h3 class="product-title">Crispy Strawberry</h3>
-                        <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Strawberry</a>
+                        <div>
+                            <h3 class="product-title">Strawberry Crunch</h3>
+                            <p class="product-card-subtitle">100% Real Strawberry</p>
+                        </div>
+                        <div class="product-card-actions">
+                            <a href="#product-strawberry" class="btn btn-outline" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">View Details</a>
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">Shop Strawberry</a>
+                        </div>
                     </div>
 
                     <!-- Product 5 -->
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9rOPbcGhvWIdFSnBb5T_3o?authuser=0" alt="Ripely Crispy Watermelon Snack">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9rOPbcGhvWIdFSnBb5T_3o?authuser=0" alt="Ripely Watermelon Wave Snack">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9rOPbcGhvWIdFSnBb5T_3o?authuser=0" download="Ripely-Watermelon-Wave" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
                         </div>
-                        <h3 class="product-title">Crispy Watermelon</h3>
-                        <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Watermelon</a>
+                        <div>
+                            <h3 class="product-title">Watermelon Wave</h3>
+                            <p class="product-card-subtitle">Naturally Air-Crisped Watermelon</p>
+                        </div>
+                        <div class="product-card-actions">
+                            <a href="#product-watermelon" class="btn btn-outline" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">View Details</a>
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">Shop Watermelon</a>
+                        </div>
                     </div>
 
                     <!-- Product 6 -->
                     <div class="product-card">
                         <div class="product-image-container">
                             <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9yf_CoVaYHX1hRHwAM3kDk?authuser=0" alt="Ripely Crispy Melon Snack">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9yf_CoVaYHX1hRHwAM3kDk?authuser=0" download="Ripely-Crispy-Melon" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
                         </div>
-                        <h3 class="product-title">Crispy Melon</h3>
-                        <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Melon</a>
+                        <div>
+                            <h3 class="product-title">Crispy Melon</h3>
+                            <p class="product-card-subtitle">Naturally Air-Crisped Melon</p>
+                        </div>
+                        <div class="product-card-actions">
+                            <a href="#product-melon" class="btn btn-outline" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">View Details</a>
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">Shop Melon</a>
+                        </div>
                     </div>
 
                     <!-- Product 7 -->
                     <div class="product-card">
                         <div class="product-image-container">
                             <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/bTrohzYwBDk0MUzr4AJkmB?authuser=0" alt="Ripely Crispy Chili Snack">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/bTrohzYwBDk0MUzr4AJkmB?authuser=0" download="Ripely-Crispy-Chili" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
                         </div>
-                        <h3 class="product-title">Crispy Chili</h3>
-                        <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.8rem;">Shop Chili</a>
+                        <div>
+                            <h3 class="product-title">Crispy Chili</h3>
+                            <p class="product-card-subtitle">Air-Crisped Chili</p>
+                        </div>
+                        <div class="product-card-actions">
+                            <a href="#product-chili" class="btn btn-outline" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">View Details</a>
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-dark" style="width: 100%; padding: 0.7rem; font-size: 0.85rem;">Shop Chili</a>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Detailed Product Pages / Specification Blocks Section -->
+        <section id="product-details" class="product-details-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Product Details</h2>
+                    <p class="subtitle">Complete ingredient, process, and packaging information for every single-ingredient snack in our lineup.</p>
+                </div>
+
+                <!-- Quick Navigation Bar -->
+                <div class="product-quick-nav">
+                    <a href="#product-peach" class="product-nav-item">Crispy Peach</a>
+                    <a href="#product-mandarin" class="product-nav-item">Crispy Mandarin</a>
+                    <a href="#product-pineapple" class="product-nav-item">Pineapple Zest</a>
+                    <a href="#product-strawberry" class="product-nav-item">Strawberry Crunch</a>
+                    <a href="#product-watermelon" class="product-nav-item">Watermelon Wave</a>
+                    <a href="#product-melon" class="product-nav-item">Crispy Melon</a>
+                    <a href="#product-chili" class="product-nav-item">Crispy Chili</a>
+                </div>
+
+                <!-- Detailed Product Page 1: Crispy Peach / Naturally Dried Peach -->
+                <article id="product-peach" class="product-detail-card peach">
+                    <div class="product-detail-grid">
+                        <div class="product-detail-image-wrapper">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/86rtTBywLC_7GYI8REROLk?authuser=0" alt="Ripely Crispy Peach Snack Pouch Detail View">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/86rtTBywLC_7GYI8REROLk?authuser=0" download="Ripely-Crispy-Peach-Detail" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
+                        </div>
+                        <div class="product-detail-info">
+                            <span class="product-badge-pill">Single Ingredient • 100% Real Fruit</span>
+                            <h3>Crispy Peach</h3>
+                            <p class="product-detail-subtitle">Naturally Dried Peach</p>
+                            <p class="product-detail-desc">Our Crispy Peach snack is made exclusively from 100% real peaches, gently air-crisped to preserve their natural sweetness and crisp texture. Packaged in a peach and cream stand-up pouch with a heart-shaped transparent window that displays the real dried fruit inside, this snack contains no added sugar, no preservatives, and no added oil.</p>
+                            
+                            <div class="product-specs-grid">
+                                <div class="spec-item">
+                                    <span class="spec-label">Ingredients</span>
+                                    <span class="spec-value">100% Real Peaches. Nothing else.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Process</span>
+                                    <span class="spec-value">Air-Crisped</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Additives</span>
+                                    <span class="spec-value">Zero Added Sugar or Oils</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Packaging</span>
+                                    <span class="spec-value">Heart-Window Pouch</span>
+                                </div>
+                            </div>
+
+                            <!-- Ripely Back Panel: Naturally Dried Peach Nutrition Facts -->
+                            <div class="back-panel-card">
+                                <div class="back-panel-header">
+                                    <span class="back-panel-tag">Ripely Back Panel: Naturally Dried Peach</span>
+                                    <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">Ripely: Simply Fruit. Pure Energy.</h4>
+                                    <p style="font-size: 0.85rem; font-weight: 600; opacity: 0.9; margin-bottom: 0;">100% Real Fruit. Nothing Else.</p>
+                                </div>
+                                
+                                <div class="nutrition-label">
+                                    <div class="nutrition-title">Nutrition Facts</div>
+                                    <div class="serving-info">Serving Size: 1 pouch</div>
+                                    <div class="calories-row">
+                                        <div>
+                                            <div class="calories-label">Amount per serving</div>
+                                            <div style="font-size: 1.1rem; font-weight: 700;">Calories</div>
+                                        </div>
+                                        <div class="calories-value">90</div>
+                                    </div>
+                                    
+                                    <table class="nutrition-table">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Total Fat</strong> 0g</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Sodium</strong> 0mg</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Total Sugars</strong> 18g (No added sugars)</td>
+                                            </tr>
+                                            <tr class="thick-border">
+                                                <td><strong>Protein</strong> 1g</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <div class="nutrition-ingredients">
+                                        <strong>Ingredients:</strong> 100% Real Peaches. Nothing else.
+                                    </div>
+                                    
+                                    <div class="nutrition-storage">
+                                        Store in a cool, dry place. Reseal after opening.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-primary">Shop Crispy Peach</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Detailed Product Page 2: Crispy Mandarin -->
+                <article id="product-mandarin" class="product-detail-card mandarin">
+                    <div class="product-detail-grid">
+                        <div class="product-detail-image-wrapper">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/8FT1L9rpoZ_8ZpJ5P6X4NS?authuser=0" alt="Ripely Crispy Mandarin Snack Pouch Detail View">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/8FT1L9rpoZ_8ZpJ5P6X4NS?authuser=0" download="Ripely-Crispy-Mandarin-Detail" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
+                        </div>
+                        <div class="product-detail-info">
+                            <span class="product-badge-pill">Single Ingredient • Citrus Energy</span>
+                            <h3>Crispy Mandarin</h3>
+                            <p class="product-detail-subtitle">Concentrated citrus goodness air-crisped for maximum crunch.</p>
+                            <p class="product-detail-desc">Featuring real mandarin segments air-crisped to lock in vibrant flavor, Ripely Crispy Mandarin offers a bright, refreshing taste. The stand-up pouch boasts a bright yellow and orange design paired with a clear, apple-shaped window showcasing the dried fruit inside. Pure, simple, and satisfying.</p>
+                            
+                            <div class="product-specs-grid">
+                                <div class="spec-item">
+                                    <span class="spec-label">Ingredients</span>
+                                    <span class="spec-value">100% Mandarin Oranges. Nothing else.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Process</span>
+                                    <span class="spec-value">Air-Crisped</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Additives</span>
+                                    <span class="spec-value">Zero Added Sugar</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Packaging</span>
+                                    <span class="spec-value">Apple-Window Pouch</span>
+                                </div>
+                            </div>
+
+                            <!-- Ripely Back Panel: Crispy Mandarin Nutrition Facts -->
+                            <div class="back-panel-card">
+                                <div class="back-panel-header">
+                                    <span class="back-panel-tag">Ripely Back Panel: Crispy Mandarin</span>
+                                    <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">Ripely: Simply Fruit. Pure Energy.</h4>
+                                    <p style="font-size: 0.85rem; font-weight: 600; opacity: 0.9; margin-bottom: 0;">100% Real Fruit. Nothing Else.</p>
+                                </div>
+                                
+                                <div class="nutrition-label">
+                                    <div class="nutrition-title">Nutrition Facts</div>
+                                    <div class="serving-info">Per Serving Size: 1 pouch</div>
+                                    <div class="calories-row">
+                                        <div>
+                                            <div class="calories-label">Amount per serving</div>
+                                            <div style="font-size: 1.1rem; font-weight: 700;">Calories</div>
+                                        </div>
+                                        <div class="calories-value">75</div>
+                                    </div>
+                                    
+                                    <table class="nutrition-table">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Total Fat</strong> 0g</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Sodium</strong> 0mg</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Total Carbohydrates</strong> 19g</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="indent">Sugars 15g (Includes 0g Added Sugars)</td>
+                                            </tr>
+                                            <tr class="thick-border">
+                                                <td><strong>Protein</strong> 1g</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <div class="nutrition-ingredients">
+                                        <strong>Ingredients:</strong> 100% Mandarin Oranges. Nothing else.
+                                    </div>
+                                    
+                                    <div class="nutrition-storage">
+                                        Store in a cool, dry place. Reseal after opening.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-primary">Shop Crispy Mandarin</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Detailed Product Page 3: Pineapple Zest -->
+                <article id="product-pineapple" class="product-detail-card pineapple">
+                    <div class="product-detail-grid">
+                        <div class="product-detail-image-wrapper">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9AgKXyMD6KaeUqou7Ix4Ux?authuser=0" alt="Ripely Pineapple Zest Snack Pouch Detail View">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9AgKXyMD6KaeUqou7Ix4Ux?authuser=0" download="Ripely-Pineapple-Zest-Detail" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
+                        </div>
+                        <div class="product-detail-info">
+                            <span class="product-badge-pill">Single Ingredient • Tropical Sweetness</span>
+                            <h3>Pineapple Zest</h3>
+                            <p class="product-detail-subtitle">Naturally Air-Crisped Pineapple</p>
+                            <p class="product-detail-desc">Ripely: Simply Fruit. Pure Energy. 100% Real Fruit. Nothing Else. Our Pineapple Zest snack brings tropical sweetness straight from the orchard into a light, air-crisped treat. Housed in a yellow and green pouch with a clear fruit-shaped window, each bag is packed with real pineapple chunks prepared without frying or synthetic additives.</p>
+                            
+                            <div class="product-specs-grid">
+                                <div class="spec-item">
+                                    <span class="spec-label">Ingredient</span>
+                                    <span class="spec-value">100% Pineapple. Nothing else.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Process</span>
+                                    <span class="spec-value">Air-Crisped</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Additives</span>
+                                    <span class="spec-value">0g Added Sugars</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Storage</span>
+                                    <span class="spec-value">Cool, dry place. Reseal after opening.</span>
+                                </div>
+                            </div>
+
+                            <!-- Ripely Back Panel: Pineapple Zest Nutrition Facts -->
+                            <div class="back-panel-card">
+                                <div class="back-panel-header">
+                                    <span class="back-panel-tag">Ripely Back Panel: Pineapple Zest</span>
+                                    <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">Ripely: Simply Fruit. Pure Energy.</h4>
+                                    <p style="font-size: 0.85rem; font-weight: 600; opacity: 0.9; margin-bottom: 0;">100% Real Fruit. Nothing Else.</p>
+                                </div>
+                                
+                                <div class="nutrition-label">
+                                    <div class="nutrition-title">Nutrition Facts</div>
+                                    <div class="serving-info">Per Serving Size: 1 pouch</div>
+                                    <div class="calories-row">
+                                        <div>
+                                            <div class="calories-label">Amount per serving</div>
+                                            <div style="font-size: 1.1rem; font-weight: 700;">Calories</div>
+                                        </div>
+                                        <div class="calories-value">90</div>
+                                    </div>
+                                    
+                                    <table class="nutrition-table">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Total Fat</strong> 0g</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Sodium</strong> 0mg</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Total Carbohydrates</strong> 22g</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="indent">Sugars 18g (Includes 0g Added Sugars)</td>
+                                            </tr>
+                                            <tr class="thick-border">
+                                                <td><strong>Protein</strong> 1g</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <div class="nutrition-ingredients">
+                                        <strong>Ingredients:</strong> 100% Pineapple. Nothing else.
+                                    </div>
+                                    
+                                    <div class="nutrition-storage">
+                                        Store in a cool, dry place. Reseal after opening.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Shop Pineapple Zest</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Detailed Product Page 4: Strawberry Crunch -->
+                <article id="product-strawberry" class="product-detail-card strawberry">
+                    <div class="product-detail-grid">
+                        <div class="product-detail-image-wrapper">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9i6PesDH6s68Ag8muj3kBF?authuser=0" alt="Ripely Strawberry Crunch Snack Pouch Detail View">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9i6PesDH6s68Ag8muj3kBF?authuser=0" download="Ripely-Strawberry-Crunch-Detail" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
+                        </div>
+                        <div class="product-detail-info">
+                            <span class="product-badge-pill">Single Ingredient • Berry Goodness</span>
+                            <h3>Strawberry Crunch</h3>
+                            <p class="product-detail-subtitle">Light, airy, and bursting with authentic strawberry taste.</p>
+                            <p class="product-detail-desc">Strawberry Crunch captures the full, uncompromised taste of ripe strawberries in a satisfying, light-as-air crunch. Presented in a clean white and red stand-up pouch featuring an apple-shaped window, it offers health-conscious families a pure 100% fruit snack for school, work, or travel.</p>
+                            
+                            <div class="product-specs-grid">
+                                <div class="spec-item">
+                                    <span class="spec-label">Ingredient</span>
+                                    <span class="spec-value">100% Real Strawberry</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Process</span>
+                                    <span class="spec-value">Air-Crisped</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Additives</span>
+                                    <span class="spec-value">Zero Preservatives</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Packaging</span>
+                                    <span class="spec-value">Apple-Window Pouch</span>
+                                </div>
+                            </div>
+
+                            <!-- Ripely Back Panel: Strawberry Crunch Nutrition Facts -->
+                            <div class="back-panel-card">
+                                <div class="back-panel-header">
+                                    <span class="back-panel-tag">Ripely Back Panel: Strawberry Crunch</span>
+                                    <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">Ripely: Simply Fruit. Pure Energy.</h4>
+                                    <p style="font-size: 0.85rem; font-weight: 600; opacity: 0.9; margin-bottom: 0;">100% Real Fruit. Nothing Else.</p>
+                                </div>
+                                
+                                <div class="nutrition-label">
+                                    <div class="nutrition-title">Nutrition Facts</div>
+                                    <div class="serving-info">Per Serving Size: 1 pouch</div>
+                                    <div class="calories-row">
+                                        <div>
+                                            <div class="calories-label">Amount per serving</div>
+                                            <div style="font-size: 1.1rem; font-weight: 700;">Calories</div>
+                                        </div>
+                                        <div class="calories-value">80</div>
+                                    </div>
+                                    
+                                    <table class="nutrition-table">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Total Fat</strong> 0g</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Sodium</strong> 0mg</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Total Carbohydrates</strong> 18g</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="indent">Sugars 12g (Includes 0g Added Sugars)</td>
+                                            </tr>
+                                            <tr class="thick-border">
+                                                <td><strong>Protein</strong> 1g</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <div class="nutrition-ingredients">
+                                        <strong>Ingredients:</strong> 100% Real Strawberry. Nothing else.
+                                    </div>
+                                    
+                                    <div class="nutrition-storage">
+                                        Store in a cool, dry place. Reseal after opening.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-primary">Shop Strawberry Crunch</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Detailed Product Page 5: Watermelon Wave -->
+                <article id="product-watermelon" class="product-detail-card watermelon">
+                    <div class="product-detail-grid">
+                        <div class="product-detail-image-wrapper">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9rOPbcGhvWIdFSnBb5T_3o?authuser=0" alt="Ripely Watermelon Wave Snack Pouch Detail View">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9rOPbcGhvWIdFSnBb5T_3o?authuser=0" download="Ripely-Watermelon-Wave-Detail" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
+                        </div>
+                        <div class="product-detail-info">
+                            <span class="product-badge-pill">Single Ingredient • Summer Crunch</span>
+                            <h3>Watermelon Wave</h3>
+                            <p class="product-detail-subtitle">Naturally Air-Crisped Watermelon</p>
+                            <p class="product-detail-desc">Ripely: Simply Fruit. Pure Energy. 100% Real Fruit. Nothing Else. Experience watermelon in a whole new way. Gently air-crisped without fried oils or added sugar, this snack comes in a playful pink and light green pouch with watermelon slice graphics and a clear window showcasing the dried watermelon inside.</p>
+                            
+                            <div class="product-specs-grid">
+                                <div class="spec-item">
+                                    <span class="spec-label">Ingredients</span>
+                                    <span class="spec-value">100% Watermelon. Nothing else.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Process</span>
+                                    <span class="spec-value">Air-Crisped</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Additives</span>
+                                    <span class="spec-value">Zero Added Sugar</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Packaging</span>
+                                    <span class="spec-value">Clear Window Pouch</span>
+                                </div>
+                            </div>
+
+                            <!-- Ripely Back Panel: Watermelon Wave Nutrition Facts -->
+                            <div class="back-panel-card">
+                                <div class="back-panel-header">
+                                    <span class="back-panel-tag">Ripely Back Panel: Watermelon Wave</span>
+                                    <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">Ripely: Simply Fruit. Pure Energy.</h4>
+                                    <p style="font-size: 0.85rem; font-weight: 600; opacity: 0.9; margin-bottom: 0;">100% Real Fruit. Nothing Else.</p>
+                                </div>
+                                
+                                <div class="nutrition-label">
+                                    <div class="nutrition-title">Nutrition Facts</div>
+                                    <div class="serving-info">Per Serving Size: 1 pouch</div>
+                                    <div class="calories-row">
+                                        <div>
+                                            <div class="calories-label">Amount per serving</div>
+                                            <div style="font-size: 1.1rem; font-weight: 700;">Calories</div>
+                                        </div>
+                                        <div class="calories-value">60</div>
+                                    </div>
+                                    
+                                    <table class="nutrition-table">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Total Fat</strong> 0g</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Sodium</strong> 0mg</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Total Carbohydrates</strong> 15g</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="indent">Sugars 12g (Includes 0g Added Sugars)</td>
+                                            </tr>
+                                            <tr class="thick-border">
+                                                <td><strong>Protein</strong> 1g</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <div class="nutrition-ingredients">
+                                        <strong>Ingredients:</strong> 100% Watermelon. Nothing else.
+                                    </div>
+                                    
+                                    <div class="nutrition-storage">
+                                        Store in a cool, dry place. Reseal after opening.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-primary">Shop Watermelon Wave</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Detailed Product Page 6: Crispy Melon -->
+                <article id="product-melon" class="product-detail-card melon">
+                    <div class="product-detail-grid">
+                        <div class="product-detail-image-wrapper">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9yf_CoVaYHX1hRHwAM3kDk?authuser=0" alt="Ripely Crispy Melon Snack Pouch Detail View">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9yf_CoVaYHX1hRHwAM3kDk?authuser=0" download="Ripely-Crispy-Melon-Detail" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
+                        </div>
+                        <div class="product-detail-info">
+                            <span class="product-badge-pill">Single Ingredient • Clean Label</span>
+                            <h3>Crispy Melon</h3>
+                            <p class="product-detail-subtitle">Naturally Air-Crisped Melon</p>
+                            <p class="product-detail-desc">Made from 100% real melon pieces, this snack delivers clean-label clarity and gentle sweetness. Styled in a sophisticated sage green and terracotta pouch with an apple-shaped window, Crispy Melon provides sustained, natural energy with zero preservatives.</p>
+                            
+                            <div class="product-specs-grid">
+                                <div class="spec-item">
+                                    <span class="spec-label">Ingredients</span>
+                                    <span class="spec-value">100% Melon. Nothing else.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Process</span>
+                                    <span class="spec-value">Air-Crisped</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Additives</span>
+                                    <span class="spec-value">Zero Preservatives</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Packaging</span>
+                                    <span class="spec-value">Apple-Window Pouch</span>
+                                </div>
+                            </div>
+
+                            <!-- Ripely Back Panel: Crispy Melon Nutrition Facts -->
+                            <div class="back-panel-card">
+                                <div class="back-panel-header">
+                                    <span class="back-panel-tag">Ripely Back Panel: Crispy Melon</span>
+                                    <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">Ripely: Simply Fruit. Pure Energy.</h4>
+                                    <p style="font-size: 0.85rem; font-weight: 600; opacity: 0.9; margin-bottom: 0;">100% Real Fruit. Nothing Else.</p>
+                                </div>
+                                
+                                <div class="nutrition-label">
+                                    <div class="nutrition-title">Nutrition Facts</div>
+                                    <div class="serving-info">Per Serving Size: 1 pouch</div>
+                                    <div class="calories-row">
+                                        <div>
+                                            <div class="calories-label">Amount per serving</div>
+                                            <div style="font-size: 1.1rem; font-weight: 700;">Calories</div>
+                                        </div>
+                                        <div class="calories-value">65</div>
+                                    </div>
+                                    
+                                    <table class="nutrition-table">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Total Fat</strong> 0g</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Sodium</strong> 0mg</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Total Carbohydrates</strong> 16g</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="indent">Sugars 13g (Includes 0g Added Sugars)</td>
+                                            </tr>
+                                            <tr class="thick-border">
+                                                <td><strong>Protein</strong> 1g</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <div class="nutrition-ingredients">
+                                        <strong>Ingredients:</strong> 100% Melon. Nothing else.
+                                    </div>
+                                    
+                                    <div class="nutrition-storage">
+                                        Store in a cool, dry place. Reseal after opening.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-primary">Shop Crispy Melon</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Detailed Product Page 7: Crispy Chili -->
+                <article id="product-chili" class="product-detail-card chili">
+                    <div class="product-detail-grid">
+                        <div class="product-detail-image-wrapper">
+                            <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/bTrohzYwBDk0MUzr4AJkmB?authuser=0" alt="Ripely Crispy Chili Snack Pouch Detail View">
+                            <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/bTrohzYwBDk0MUzr4AJkmB?authuser=0" download="Ripely-Crispy-Chili-Detail" class="download-btn" aria-label="Download image" title="Download image">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                            </a>
+                        </div>
+                        <div class="product-detail-info">
+                            <span class="product-badge-pill">Bold Flavor • Air-Crisped</span>
+                            <h3>Crispy Chili</h3>
+                            <p class="product-detail-subtitle">A savory, spicy crunch crafted through air-crisping.</p>
+                            <p class="product-detail-desc">For those who enjoy a lively kick, Crispy Chili offers a bold, air-crisped snacking experience without deep frying. Packaged in a eye-catching two-toned red and yellow pouch with chili pepper graphics and a clear window displaying the crisped chili snack inside.</p>
+                            
+                            <div class="product-specs-grid">
+                                <div class="spec-item">
+                                    <span class="spec-label">Snack Type</span>
+                                    <span class="spec-value">Air-Crisped Chili</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Process</span>
+                                    <span class="spec-value">Air-Crisped</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Quality</span>
+                                    <span class="spec-value">No Added Oils</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Packaging</span>
+                                    <span class="spec-value">Chili Graphics Pouch</span>
+                                </div>
+                            </div>
+
+                            <!-- Ripely Back Panel: Crispy Chili Nutrition Facts -->
+                            <div class="back-panel-card">
+                                <div class="back-panel-header">
+                                    <span class="back-panel-tag">Ripely Back Panel: Crispy Chili</span>
+                                    <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;">Ripely: Simply Fruit. Pure Energy.</h4>
+                                    <p style="font-size: 0.85rem; font-weight: 600; opacity: 0.9; margin-bottom: 0;">Clean Snacking.</p>
+                                </div>
+                                
+                                <div class="nutrition-label">
+                                    <div class="nutrition-title">Nutrition Facts</div>
+                                    <div class="serving-info">Per Serving Size: 1 pouch</div>
+                                    <div class="calories-row">
+                                        <div>
+                                            <div class="calories-label">Amount per serving</div>
+                                            <div style="font-size: 1.1rem; font-weight: 700;">Calories</div>
+                                        </div>
+                                        <div class="calories-value">50</div>
+                                    </div>
+                                    
+                                    <table class="nutrition-table">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Total Fat</strong> 0g</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Sodium</strong> 0mg</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Total Carbohydrates</strong> 12g</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="indent">Sugars 8g (Includes 0g Added Sugars)</td>
+                                            </tr>
+                                            <tr class="thick-border">
+                                                <td><strong>Protein</strong> 2g</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <div class="nutrition-storage">
+                                        Store in a cool, dry place. Reseal after opening.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://eatripely.com" target="_blank" class="btn btn-primary">Shop Crispy Chili</a>
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </section>
 
@@ -571,7 +1584,10 @@
             <div class="container">
                 <div class="process-split">
                     <div class="process-image-wrapper">
-                        <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9HhoNEV_an5fqAg8ztg4qq?authuser=0" alt="Natural fruit preparation">
+                        <img src="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9HhoNEV_an5fqAg8ztg4qq?authuser=0" data-alt="Close-up macro shot of thinly sliced vibrant fresh fruit resting on a clean metallic cooling rack before drying. Dappled natural sunlight casting soft shadows, evoking a wholesome, natural drying process. Minimalist, modern orchard-fresh aesthetic. No text or branding." alt="Natural fruit preparation">
+                        <a href="https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/9HhoNEV_an5fqAg8ztg4qq?authuser=0" download="Ripely-Process-Preparation" class="download-btn" aria-label="Download image" title="Download image">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+                        </a>
                     </div>
                     <div class="process-content" style="position: relative; z-index: 10;">
                         <div class="deco-circle"></div>
@@ -590,9 +1606,9 @@
 
         <!-- CTA Banner -->
         <section class="cta-banner">
-            <div class="cta-bg" style="background-image: url('https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/aAZWazmVJ8194CTjqBYkwa?authuser=0'); background-size: cover; background-position: center;"></div>
+            <div class="cta-bg" data-alt="Vibrant abstract background with swirling soft colors of golden yellow, sage green, and charcoal, creating a playful and sophisticated organic texture. Smooth gradients, clean modern art style, no text." style="background-image: url('https://labs.google.com/pomelli_downloads/websites/9M6bET2dvO49j_A023jkCH/resources/aAZWazmVJ8194CTjqBYkwa?authuser=0'); background-size: cover; background-position: center;"></div>
             <div class="cta-overlay"></div>
-
+            
             <div class="cta-content">
                 <h2>Ready for pure energy?</h2>
                 <p class="subtitle" style="margin-bottom: 3rem; color: var(--color-dark);">Experience the light, satisfying crunch of simply fruit.</p>
@@ -609,25 +1625,27 @@
                     <h2 class="brand-logo" style="font-size: 2.5rem; margin-bottom: 1rem;">Ripely</h2>
                     <p>Simply fruit. Pure energy.<br>Naturally air-crisped fruit snacks.</p>
                 </div>
-
+                
                 <div class="footer-col">
                     <h4>Contact Us</h4>
                     <a href="mailto:lets@eatripely.com">lets@eatripely.com</a>
                     <p style="margin-top: 1rem;">Seattle-based snack company.</p>
                 </div>
-
+                
                 <div class="footer-col">
                     <h4>Explore</h4>
                     <a href="https://eatripely.com" target="_blank">Shop Online</a>
                     <a href="#snacks">Our Snacks</a>
+                    <a href="#product-details">Product Details</a>
                     <a href="#process">Our Process</a>
                 </div>
             </div>
-
+            
             <div class="footer-bottom">
-                <p>© Ripely. Honesty, Simplicity, Transparency, Wholesomeness.</p>
+                <p>&copy; Ripely. Honesty, Simplicity, Transparency, Wholesomeness.</p>
             </div>
         </div>
     </footer>
 
-</body></html>
+</body>
+</html>
